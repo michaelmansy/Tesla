@@ -7,6 +7,19 @@ const exteriorImage = document.querySelector('#exterior-image');
 const interiorImage = document.querySelector('#interior-image');
 
 
+
+// Image Mapping
+const exteriorImages = {
+    'Stealth Grey': './images/model-y-stealth-grey.jpg',
+    'Pearl White': './images/model-y-pearl-white.jpg',
+    'Deep Blue': './images/model-y-deep-blue.jpg',
+    'Solid Black': './images/model-y-solid-black.jpg',
+    'Ultra Red': './images/model-y-ultra-red.jpg',
+    'Quicksilver': './images/model-y-quicksilver.jpg',
+
+}
+
+
 // Handle the top bar on scroll
 const handleScroll = () => {
     const atTop = window.scrollY === 0;
