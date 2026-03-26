@@ -22,3 +22,7 @@
 .hidden-bar {
     transform: translateY(-100%);
 }
+
+button:hover{
+    cursor: pointer;
+}

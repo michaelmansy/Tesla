@@ -6,6 +6,7 @@ const interiorColorSelection = document.querySelector('#interior-buttons');
 const exteriorImage = document.querySelector('#exterior-image');
 const interiorImage = document.querySelector('#interior-image');
 
+const wheelButtonsSection = document.querySelector('#wheel-buttons');
 
 
 // Image Mapping
@@ -62,8 +63,25 @@ const handleColorButtonClick = (event) =>{
     }
 }
 
+
+// function to handle wheel button selections
+const handleWheelButtonClick = (event) => {
+    if(event.target.tagName === 'BUTTON'){
+        const buttons = document.querySelectorAll('#wheel-buttons button');
+        buttons.forEach((btn) => btn.classList.remove('bg-gray-700', 'text-white'));
+    }
+
+    // Add selected styles to the clicked button
+    event.target.classList.add('bg-gray-700', 'text-white');
+}
+
+
+
+
 // Event Listeners
 window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
 
 exteriorColorSelection.addEventListener('click', handleColorButtonClick);
 interiorColorSelection.addEventListener('click', handleColorButtonClick);
+
+wheelButtonsSection.addEventListener('click', handleWheelButtonClick);
