@@ -9,6 +9,14 @@ const interiorImage = document.querySelector('#interior-image');
 const wheelButtonsSection = document.querySelector('#wheel-buttons');
 
 
+let selectedColor = 'Stealth Grey';
+const selectOptions = {
+    'Performance Wheels': false,
+    'Performance Package': false,
+    'Full Self-Driving': false,
+};
+
+
 // Image Mapping
 const exteriorImages = {
     'Stealth Grey': './images/model-y-stealth-grey.jpg',
@@ -51,8 +59,8 @@ const handleColorButtonClick = (event) =>{
 
         //change exterior image
         if(event.currentTarget === exteriorColorSelection){
-            const color = button.querySelector('img').alt;
-            exteriorImage.src = exteriorImages[color];
+            selectedColor = button.querySelector('img').alt;
+            updateExteriorImage();
         }
 
         //change exterior image
@@ -61,6 +69,14 @@ const handleColorButtonClick = (event) =>{
             interiorImage.src = interiorImages[color];
         }
     }
+}
+
+
+// Update exterior image based on color and wheels
+const updateExteriorImage = () => {
+    const performanceSuffix = selectOptions['Performance Wheels'] ? '-performance' : '';
+    const colorKey = selectedColor in exteriorImages ? selectedColor : 'Stealth Grey';
+    exteriorImage.src = exteriorImages[colorKey].replace('.jgp', `${performanceSuffix}.jpg`);
 }
 
 
@@ -74,11 +90,9 @@ const handleWheelButtonClick = (event) => {
     // Add selected styles to the clicked button
     event.target.classList.add('bg-gray-700', 'text-white');
 
-    const selectedWheel = event.target.textContent.includes('Performance');
+    selectOptions['Performance Wheels'] = event.target.textContent.includes('Performance');
 
-    exteriorImage.src = selectedWheel
-        ? './images/model-y-stealth-grey-performance.jpg'
-        : './images/model-y-stealth-grey.jpg';
+    updateExteriorImage()
 }
 
 
