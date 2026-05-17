@@ -10,6 +10,10 @@ const wheelButtonsSection = document.querySelector('#wheel-buttons');
 
 const performanceBtn = document.querySelector('#performance-btn');
 
+const totalPriceElement = document.querySelector('#total-price');
+
+const basePrice = 52490;
+let currentPrice = basePrice;
 
 let selectedColor = 'Stealth Grey';
 const selectOptions = {
@@ -17,6 +21,21 @@ const selectOptions = {
     'Performance Package': false,
     'Full Self-Driving': false,
 };
+
+// Pricing Option object
+const pricing = {
+    'Performance Wheels': 2500,
+    'Performance Package': 5000,
+    'Full Self-Driving': 8500,
+    'Accessories': {
+        'Center Console Trays': 35,
+        'Sunshade': 105,
+        'All-Weather Interior Liners': 225
+    }
+}
+
+
+//function to update total price in UI
 
 
 // Image Mapping
