@@ -36,7 +36,13 @@ const pricing = {
 
 
 //function to update total price in UI
+const updateTotalPrice = () => {
+    //Reset current price to base price
+    currentPrice = basePrice;
 
+    //Update the total price in UI
+    totalPriceElement.textContent = `$${currentPrice.toLocaleString()}`;
+}
 
 // Image Mapping
 const exteriorImages = {
@@ -113,7 +119,9 @@ const handleWheelButtonClick = (event) => {
 
     selectOptions['Performance Wheels'] = event.target.textContent.includes('Performance');
 
-    updateExteriorImage()
+    updateExteriorImage();
+
+    updateTotalPrice();
 }
 
 //Performance Package
