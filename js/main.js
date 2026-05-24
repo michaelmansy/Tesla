@@ -40,6 +40,14 @@ const updateTotalPrice = () => {
     //Reset current price to base price
     currentPrice = basePrice;
 
+    if(selectOptions['Performance Wheels']){
+        currentPrice += pricing['Performance wheels'];
+    }
+
+    if(selectOptions['Performance package']){
+        currentPrice += pricing['Performance package'];
+    }
+
     //Update the total price in UI
     totalPriceElement.textContent = `$${currentPrice.toLocaleString()}`;
 }
@@ -126,8 +134,13 @@ const handleWheelButtonClick = (event) => {
 
 //Performance Package
 const handlePerformanceButtonClick = () => {
-    performanceBtn.classList.toggle('bg-gray-700');
+    const isSelected = performanceBtn.classList.toggle('bg-gray-700');
     performanceBtn.classList.toggle('text-white');
+
+    //Update selected options
+    selectOptions['Performance Package'] = isSelected;
+
+    updateTotalPrice();
 }
 
 
