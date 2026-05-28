@@ -66,6 +66,13 @@ const updateTotalPrice = () => {
             .closest('label')
             .querySelector('span')
             .textContent.trim();
+
+        const accessoryPrice = pricing['Accessories'][accessoryLabel];
+
+        //Add to current price if accessory is selected
+        if(checkbox.checked){
+            currentPrice += accessoryPrice;
+        }
     });
 
     //Update the total price in UI
